@@ -15,11 +15,13 @@ public class SecondActivity extends AppCompatActivity {
 
         txtTruyen = (TextView) findViewById(R.id.textViewThamSo);
         Intent intent = getIntent();
-        String truyenChuoi = intent.getStringExtra("dulieu");
-        int duLieuSo = intent.getIntExtra("dulieuso",1234);
-        String[] mangChuoi = intent.getStringArrayExtra("dulieumang");
+        Bundle bundle = intent.getBundleExtra("truyenthamso");
 
-        HocSinh hs = (HocSinh) intent.getSerializableExtra("dulieuhs");
+        String truyenChuoi = bundle.getString("dulieu");
+        int duLieuSo = bundle.getInt("dulieuso",1234);
+        String[] mangChuoi = bundle.getStringArray("dulieumang");
+
+        HocSinh hs = (HocSinh) bundle.getSerializable("dulieuhs");
 
         txtTruyen.setText(truyenChuoi+" "+duLieuSo+ " "+ mangChuoi[1] + hs.getHoTen() +"-"+hs.getNamsinh());
     }
